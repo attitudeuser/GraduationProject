@@ -4,7 +4,7 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{429520FE-19E1-43A6-8768-F01E47E8D9DD}" Name="毕业设计网上选题系统" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="../毕业设计网上选题系统.pdm"/>
+		<Model Expanded="Yes" ID="{429520FE-19E1-43A6-8768-F01E47E8D9DD}" Name="毕业设计网上选题系统" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="毕业设计网上选题系统.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
