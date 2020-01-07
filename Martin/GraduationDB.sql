@@ -32,7 +32,7 @@ create table issue
 /*==============================================================*/
 create table message
 (
-   Id                   int not null,
+   Id                   int not null auto_increment,
    Fid                  int not null,
    Tid                  int not null,
    Message              varchar(255),
