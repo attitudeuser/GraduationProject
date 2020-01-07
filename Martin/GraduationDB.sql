@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/1/7 10:39:48                            */
+/* Created on:     2020/1/7 15:55:20                            */
 /*==============================================================*/
 
 
@@ -21,7 +21,6 @@ create table issue
    Title                varchar(64),
    Type                 varchar(16),
    "Require"            varchar(128),
-   Numbers              int,
    Cap                  int,
    Content              varchar(255),
    Tid                  int not null,
@@ -64,6 +63,10 @@ create table user
    Phone                varchar(11),
    Type                 varchar(8),
    CreateTime           time,
+   Age                  int,
+   Sid                  varchar(11),
+   College              varchar(16),
+   Grade                char(10),
    primary key (Id)
 );
 
