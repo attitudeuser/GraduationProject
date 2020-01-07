@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/1/7 8:11:42                             */
+/* Created on:     2020/1/7 10:39:48                            */
 /*==============================================================*/
 
 
@@ -17,13 +17,14 @@ drop table if exists user;
 /*==============================================================*/
 create table issue
 (
-   Id                   int not null auto_increment,
+   Id                   int not null,
    Title                varchar(64),
    Type                 varchar(16),
    "Require"            varchar(128),
    Numbers              int,
    Cap                  int,
    Content              varchar(255),
+   Tid                  int not null,
    primary key (Id)
 );
 
@@ -32,7 +33,7 @@ create table issue
 /*==============================================================*/
 create table message
 (
-   Id                   int not null auto_increment,
+   Id                   int not null,
    Fid                  int not null,
    Tid                  int not null,
    Message              varchar(255),
@@ -65,6 +66,9 @@ create table user
    CreateTime           time,
    primary key (Id)
 );
+
+alter table issue add constraint FK_Reference_5 foreign key (Tid)
+      references user (Id) on delete restrict on update restrict;
 
 alter table message add constraint FK_Reference_1 foreign key (Fid)
       references user (Id) on delete restrict on update restrict;
