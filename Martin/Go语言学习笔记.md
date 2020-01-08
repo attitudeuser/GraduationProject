@@ -873,3 +873,163 @@ func main() {
 
 ### 3. 空指针
 
+当一个指针被定义后没有分配到任何变量时，它的值为 nil。
+
+nil 指针也称为空指针。
+
+nil在概念上和其它语言的null、None、nil、NULL一样，都指代零值或空值。
+
+一个指针变量通常缩写为 ptr。
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+   var  ptr *int
+
+   fmt.Printf("ptr 的值为 : %x\n", ptr  )
+}
+// ptr 的值为 : 0
+```
+
+空指针的判断
+
+```go
+if(ptr != nil)     /* ptr 不是空指针 */
+if(ptr == nil)    /* ptr 是空指针 */
+```
+
+## 十五、结构体
+
+### 1.定义结构体
+
+```go
+type struct_variable_type struct {
+   member definition
+   member definition
+   ...
+   member definition
+}
+```
+
+利用结构体类型声明变量：
+
+```go
+variable_name := structure_variable_type {value1, value2...valuen}
+或
+variable_name := structure_variable_type { key1: value1, key2: value2..., keyn: valuen}
+```
+
+### 2. 访问结构体成员
+
+```
+结构体.成员名
+```
+
+### 十六、语言切片
+
+### 1. 定义切片
+
+```go
+var identifier []type
+```
+
+切片不需要说明长度，或使用make()函数来创建切片
+
+```go
+var slice1 []type = make([]type, len)
+
+也可以简写为
+
+slice1 := make([]type, len)
+```
+
+也可以指定容量，其中capacity为可选参数
+
+```go
+make([]type, len, capacity)
+```
+
+这里len是数组的长度并且也是切片的初始长度。
+
+### 2. 切片初始化
+
+```go
+s := [] int {1,2,3}
+s := arr[:]
+s := arr[startIndex:endIndex]
+s := arr[startIndex:]
+s := arr[:endIndex]
+s1 := s[startIndex:endIndex]
+s := make([]type, len, cap)
+```
+
+### 3. len()和cap()函数
+
+切片是可索引的，并且可以由 len() 方法获取长度。
+
+切片提供了计算容量的方法 cap() 可以测量切片最长可以达到多少。
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+   var numbers = make([]int,3,5)
+
+   printSlice(numbers)
+}
+
+func printSlice(x []int){
+   fmt.Printf("len=%d cap=%d slice=%v\n",len(x),cap(x),x)
+}
+
+// len=3 cap=5 slice=[0 0 0]
+```
+
+### 4. 空（nil）切片
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+   var numbers []int
+
+   printSlice(numbers)
+
+   if(numbers == nil){
+      fmt.Printf("切片是空的")
+   }
+}
+
+func printSlice(x []int){
+   fmt.Printf("len=%d cap=%d slice=%v\n",len(x),cap(x),x)
+}
+//len=0 cap=0 slice=[]
+//(切片是空的)
+```
+
+### 5. 切片截取
+
+numbers := []int{0,1,2,3,4,5,6,7,8}
+
+| 截取表达式   | 结果        |
+| ------------ | ----------- |
+| numbers[1:4] | [1 2 3]     |
+| numbers[:3]  | [0 1 2]     |
+| numbers[4:]  | [4 5 6 7 8] |
+
+
+
+### 6. append()和copy()函数
+
+```go
+append(numbers,1)    //将元素1添加到numbers后边
+copy(numbers1,numbers)   // 将numbers复制到numbers1中
+```
+
