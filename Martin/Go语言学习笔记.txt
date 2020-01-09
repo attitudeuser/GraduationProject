@@ -164,6 +164,7 @@ fmt.Println("Hello, World!")
 多行注释
 多行注释
 */
+
 ```
 
 ### 4. 标识符
@@ -175,6 +176,7 @@ fmt.Println("Hello, World!")
 ```
 mahesh   kumar   abc   move_name   a_123
 myname50   _temp   j   a23b9   retVal
+
 ```
 
 ### 5. 字符串连接
@@ -196,6 +198,7 @@ myname50   _temp   j   a23b9   retVal
 
 ```go
 var age int
+
 ```
 
 ## 五、数据类型
@@ -239,7 +242,7 @@ var age int
 
 - 第一种：指定变量类型，如果没有初始化，则变量默认为零值
 
-   零值就是变量没有做初始化时系统默认设置的值。 
+  零值就是变量没有做初始化时系统默认设置的值。 
 
   ```go
   package main
@@ -263,6 +266,7 @@ var age int
   // RUNOOB
   // 0
   // false
+  
   ```
 
   1. 数值类型默认为0
@@ -280,6 +284,7 @@ var age int
      var a chan int
      var a func(string) int
      var a error // error 是接口
+     
      ```
 
 - 第二种：根据值自行判定变量类型
@@ -294,6 +299,7 @@ var age int
   
   // 结果
   // true
+  
   ```
 
 - 第三种：省略var，注意**:=**左侧如果没有声明新的变量，就会产生编译错误，格式：
@@ -304,6 +310,7 @@ var age int
   intVal :=1 // 这时候会产生编译错误
   
   intVal,intVal1 := 1,2 // 此时不会产生编译错误，因为有声明新的变量，因为 := 是一个声明语句
+  
   ```
 
    可以将 var f string = "Runoob" 简写为 f := "Runoob"： 
@@ -327,6 +334,7 @@ var (
     vname1 v_type1
     vname2 v_type2
 )
+
 ```
 
 ````go
@@ -351,6 +359,7 @@ func main(){
 
 // 结果
 // 0 0 0 false 1 2 123 hello 123 hello
+
 ````
 
 ### 3. 值类型和引用类型
@@ -385,6 +394,7 @@ func main(){
 
 ```go
 const identifier [type] = value
+
 ```
 
 ​	 你可以省略类型说明符 [type]，因为编译器可以根据变量的值来推断其类型。 
@@ -396,6 +406,7 @@ const identifier [type] = value
 
 ```go
 const c_name1, c_name2 = value1, value2
+
 ```
 
 常量还可以用作枚举：
@@ -408,6 +419,7 @@ const (
 )
 
 // 数字 0、1 和 2 分别代表未知性别、女性和男性。
+
 ```
 
  常量可以用len(), cap(), unsafe.Sizeof()函数计算表达式的值。常量表达式中，函数必须是内置函数，否则编译不过： 
@@ -427,6 +439,7 @@ func main(){
 }
 
 // abc 3 16
+
 ```
 
 ###  2. iota
@@ -456,6 +469,7 @@ func main() {
     )
     fmt.Println(a,b,c,d,e,f,g,h,i)
 }
+
 ```
 
 ## 八、运算符
@@ -513,6 +527,7 @@ func main() {
 if 布尔表达式 {
    /* 在布尔表达式为 true 时执行 */
 }
+
 ```
 
 ### 2. if ... else...
@@ -523,6 +538,7 @@ if 布尔表达式 {
 } else {
   /* 在布尔表达式为 false 时执行 */
 }
+
 ```
 
 ### 3. if嵌套
@@ -534,6 +550,7 @@ if 布尔表达式 1 {
       /* 在布尔表达式 2 为 true 时执行 */
    }
 }
+
 ```
 
 ### 4. if...else if...else
@@ -546,6 +563,7 @@ if 布尔表达式 {
 } else {
   /* 在布尔表达式为 false 时执行 */
 }
+
 ```
 
 ### 5. switch
@@ -559,6 +577,7 @@ switch var1 {
     default:
         ...
 }
+
 ```
 
 ## 十、循环语句
@@ -575,6 +594,7 @@ init: 一般为赋值表达式，给控制变量赋初值；
 condition:关系表达式或逻辑表达式，循环控制条件；
 post:一般为赋值表达式，给控制变量增量或减量。
 */
+
 ```
 
 ### 2. 实例1——计算1到10的数字之和
@@ -591,6 +611,7 @@ func main() {
         }
         fmt.Println(sum)
 }
+
 ```
 
 ### 3. 实例2——在 sum 小于 10 的时候计算 sum 自相加后的值 
@@ -613,6 +634,7 @@ func main() {
         }
         fmt.Println(sum)
 }
+
 ```
 
 ### 4. 无限循环
@@ -630,6 +652,7 @@ func main() {
         fmt.Println(sum) // 无法输出
 }
 //要停止无限循环，可以在命令窗口按下ctrl-c 。
+
 ```
 
 ### 5. For-each range循环
@@ -660,6 +683,7 @@ func main() {
 第 4 位 x 的值 = 0
 第 5 位 x 的值 = 0
 */
+
 ```
 
 
@@ -672,6 +696,7 @@ func main() {
 func function_name( [parameter list] ) [return_types] {
    函数体
 }
+
 ```
 
 - func：函数由 func 开始声明
@@ -697,6 +722,7 @@ func function_name( [parameter list] ) [return_types] {
      }
      return result
   }
+  
   ```
 
 ### 2. 函数调用
@@ -730,6 +756,7 @@ func max(num1, num2 int) int {
    }
    return result
 }
+
 ```
 
 ### 3.返回多个值
@@ -747,6 +774,7 @@ func main() {
    a, b := swap("Google", "Runoob")
    fmt.Println(a, b)
 }
+
 ```
 
 ## 十二、变量作用域
@@ -766,6 +794,7 @@ Go 语言中变量可以在三个地方声明：
 ```go
 var variable_name [SIZE] variable_type
 var balance [10] float32 //定义了数组 balance 长度为 10 类型为 float32
+
 ```
 
 ### 2. 初始化数组
@@ -774,6 +803,7 @@ var balance [10] float32 //定义了数组 balance 长度为 10 类型为 float3
 var balance = [5]float32{1000.0, 2.0, 3.4, 7.0, 50.0}  // {}中元素个数不大于[]
 var balance = [...]float32{1000.0, 2.0, 3.4, 7.0, 50.0}  // 根据{}元素个数而定
 balance[4] = 50.0 
+
 ```
 
 ### 3. 访问数组元素
@@ -797,6 +827,7 @@ func main() {
       fmt.Printf("Element[%d] = %d\n", j, n[j] )
    }
 }
+
 ```
 
 ### 4. 多维数组
@@ -805,6 +836,7 @@ func main() {
 var variable_name [SIZE1][SIZE2]...[SIZEN] variable_type   //多维数组
 
 var arrayName [ x ][ y ] variable_type  //二维数组
+
 ```
 
  1. 初始化二维数组
@@ -820,6 +852,7 @@ var arrayName [ x ][ y ] variable_type  //二维数组
      {0, 1, 2, 3} ,   /*  第一行索引为 0 */
      {4, 5, 6, 7} ,   /*  第二行索引为 1 */
      {8, 9, 10, 11}}   /* 第三行索引为 2 */
+    
     ```
 
     
@@ -830,6 +863,7 @@ var arrayName [ x ][ y ] variable_type  //二维数组
     val := a[2][3]
     或
     var value int = a[2][3]
+    
     ```
 
     
@@ -846,6 +880,7 @@ var arrayName [ x ][ y ] variable_type  //二维数组
 var var_name *var-type
 var ip *int        /* 指向整型*/
 var fp *float32    /* 指向浮点型 */
+
 ```
 
 ### 2.使用指针
@@ -869,6 +904,7 @@ func main() {
    /* 使用指针访问值 */
    fmt.Printf("*ip 变量的值: %d\n", *ip )
 }
+
 ```
 
 ### 3. 空指针
@@ -892,6 +928,7 @@ func main() {
    fmt.Printf("ptr 的值为 : %x\n", ptr  )
 }
 // ptr 的值为 : 0
+
 ```
 
 空指针的判断
@@ -899,6 +936,7 @@ func main() {
 ```go
 if(ptr != nil)     /* ptr 不是空指针 */
 if(ptr == nil)    /* ptr 是空指针 */
+
 ```
 
 ## 十五、结构体
@@ -912,6 +950,7 @@ type struct_variable_type struct {
    ...
    member definition
 }
+
 ```
 
 利用结构体类型声明变量：
@@ -920,12 +959,14 @@ type struct_variable_type struct {
 variable_name := structure_variable_type {value1, value2...valuen}
 或
 variable_name := structure_variable_type { key1: value1, key2: value2..., keyn: valuen}
+
 ```
 
 ### 2. 访问结构体成员
 
 ```
 结构体.成员名
+
 ```
 
 ### 十六、语言切片
@@ -934,6 +975,7 @@ variable_name := structure_variable_type { key1: value1, key2: value2..., keyn: 
 
 ```go
 var identifier []type
+
 ```
 
 切片不需要说明长度，或使用make()函数来创建切片
@@ -944,12 +986,14 @@ var slice1 []type = make([]type, len)
 也可以简写为
 
 slice1 := make([]type, len)
+
 ```
 
 也可以指定容量，其中capacity为可选参数
 
 ```go
 make([]type, len, capacity)
+
 ```
 
 这里len是数组的长度并且也是切片的初始长度。
@@ -964,6 +1008,7 @@ s := arr[startIndex:]
 s := arr[:endIndex]
 s1 := s[startIndex:endIndex]
 s := make([]type, len, cap)
+
 ```
 
 ### 3. len()和cap()函数
@@ -988,6 +1033,7 @@ func printSlice(x []int){
 }
 
 // len=3 cap=5 slice=[0 0 0]
+
 ```
 
 ### 4. 空（nil）切片
@@ -1012,6 +1058,7 @@ func printSlice(x []int){
 }
 //len=0 cap=0 slice=[]
 //(切片是空的)
+
 ```
 
 ### 5. 切片截取
@@ -1031,5 +1078,347 @@ numbers := []int{0,1,2,3,4,5,6,7,8}
 ```go
 append(numbers,1)    //将元素1添加到numbers后边
 copy(numbers1,numbers)   // 将numbers复制到numbers1中
+
 ```
+
+## 十六、语言接口
+
+ Go 语言提供了另外一种数据类型即接口，它把所有的具有共性的方法定义在一起，任何其他类型只要实现了这些方法就是实现了这个接口 
+
+````go
+/* 定义接口 */
+type interface_name interface {
+   method_name1 [return_type]
+   method_name2 [return_type]
+   method_name3 [return_type]
+   ...
+   method_namen [return_type]
+}
+
+/* 定义结构体 */
+type struct_name struct {
+   /* variables */
+}
+
+/* 实现接口方法 */
+func (struct_name_variable struct_name) method_name1() [return_type] {
+   /* 方法实现 */
+}
+...
+func (struct_name_variable struct_name) method_namen() [return_type] {
+   /* 方法实现*/
+}
+
+````
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+type Phone interface {
+    call()
+}
+
+type NokiaPhone struct {
+}
+
+func (nokiaPhone NokiaPhone) call() {
+    fmt.Println("I am Nokia, I can call you!")
+}
+
+type IPhone struct {
+}
+
+func (iPhone IPhone) call() {
+    fmt.Println("I am iPhone, I can call you!")
+}
+
+func main() {
+    var phone Phone
+
+    phone = new(NokiaPhone)
+    phone.call()
+
+    phone = new(IPhone)
+    phone.call()
+
+}
+
+/*
+I am Nokia, I can call you!
+I am iPhone, I can call you!
+*/
+
+```
+
+## 十七、错误处理
+
+Go语言通过内置的错误接口提供了非常简单的错误处理机制。
+
+```go
+type error interface {
+	Error() string
+}
+
+```
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+// 定义一个 DivideError 结构
+type DivideError struct {
+    dividee int
+    divider int
+}
+
+// 实现 `error` 接口
+func (de *DivideError) Error() string {
+    strFormat := `
+    Cannot proceed, the divider is zero.
+    dividee: %d
+    divider: 0
+`
+    return fmt.Sprintf(strFormat, de.dividee)
+}
+
+// 定义 `int` 类型除法运算的函数
+func Divide(varDividee int, varDivider int) (result int, errorMsg string) {
+    if varDivider == 0 {
+            dData := DivideError{
+                    dividee: varDividee,
+                    divider: varDivider,
+            }
+            errorMsg = dData.Error()
+            return
+    } else {
+            return varDividee / varDivider, ""
+    }
+
+}
+
+func main() {
+
+    // 正常情况
+    if result, errorMsg := Divide(100, 10); errorMsg == "" {
+            fmt.Println("100/10 = ", result)
+    }
+    // 当除数为零的时候会返回错误信息
+    if _, errorMsg := Divide(100, 0); errorMsg != "" {
+            fmt.Println("errorMsg is: ", errorMsg)
+    }
+
+}
+/*
+100/10 =  10
+errorMsg is:  
+    Cannot proceed, the divider is zero.
+    dividee: 100
+    divider: 0
+*/
+
+```
+
+## 十八、并发
+
+Go 语言支持并发，我们只需要通过 go 关键字来开启 goroutine 即可。
+
+goroutine 是轻量级线程，goroutine 的调度是由 Golang 运行时进行管理的。
+
+goroutine 语法格式：
+
+```go
+go 函数名（参数列表）
+go f(x,y,z)
+f(x,y,z) //开启一个新的goroutine
+
+```
+
+Go允许使用go语句开启一个新的运行期线程，即goroutine，以一个不同的、新创建的goroutine来执行一个函数。同一个程序中的所有goroutine共享同一个地址空间。
+
+```go
+package main
+
+import (
+        "fmt"
+        "time"
+)
+
+func say(s string) {
+        for i := 0; i < 5; i++ {
+                time.Sleep(100 * time.Millisecond)
+                fmt.Println(s)
+        }
+}
+
+func main() {
+        go say("world")
+        say("hello")
+}
+
+
+```
+
+执行以上代码，你会看到输出的 hello 和 world 是没有固定先后顺序。因为它们是两个 goroutine 在执行：
+
+```go
+world
+hello
+hello
+world
+world
+hello
+hello
+world
+world
+hello
+
+```
+
+### 1.通道（channel）
+
+一个传递数据的数据结构
+
+通道可用于两个goroutine之间通过传递一个指定类型的值来同步运行和通讯。操作符 <- 用于指定通道的方向，发送或接收。如果未指定方向，则为双向通道。
+
+```go
+ch <- v //把v发送到通道ch
+v := <- ch  // 从ch接收数据，并把值赋给 v
+
+```
+
+ 声明一个通道很简单，我们使用chan关键字即可，通道在使用前必须先创建： 
+
+```go
+ch := make(chan int)
+
+```
+
+ **注意**：默认情况下，通道是不带缓冲区的。发送端发送数据，同时必须有接收端相应的接收数据。
+
+以下实例通过两个 goroutine 来计算数字之和，在 goroutine 完成计算后，它会计算两个结果的和：
+
+```go
+package main
+
+import "fmt"
+
+func sum(s []int, c chan int) {
+        sum := 0
+        for _, v := range s {
+                sum += v
+        }
+        c <- sum // 把 sum 发送到通道 c
+}
+
+func main() {
+        s := []int{7, 2, 8, -9, 4, 0}
+
+        c := make(chan int)
+        go sum(s[:len(s)/2], c)
+        go sum(s[len(s)/2:], c)
+        x, y := <-c, <-c // 从通道 c 中接收
+
+        fmt.Println(x, y, x+y)
+}
+// -5 17 12
+
+```
+
+### 2.通道缓存区
+
+ 通道可以设置缓冲区，通过 make 的第二个参数指定缓冲区大小： 
+
+```go
+ch := make(chan int, 100)
+
+```
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    // 这里我们定义了一个可以存储整数类型的带缓冲通道
+        // 缓冲区大小为2
+        ch := make(chan int, 2)
+
+        // 因为 ch 是带缓冲的通道，我们可以同时发送两个数据
+        // 而不用立刻需要去同步读取数据
+        ch <- 1
+        ch <- 2
+
+        // 获取这两个数据
+        fmt.Println(<-ch)
+        fmt.Println(<-ch)
+}
+// 1
+// 2
+
+```
+
+###  3. 遍历通道与关闭通道
+
+ Go 通过 range 关键字来实现遍历读取到的数据，类似于与数组或切片。格式如下：  
+
+```go
+v，ok := <- ch
+
+```
+
+ 如果通道接收不到数据后 ok 就为 false，这时通道就可以使用 close() 函数来关闭。 
+
+```go
+package main
+
+import (
+        "fmt"
+)
+
+func fibonacci(n int, c chan int) {
+        x, y := 0, 1
+        for i := 0; i < n; i++ {
+                c <- x
+                x, y = y, x+y
+        }
+        close(c)
+}
+
+func main() {
+        c := make(chan int, 10)
+        go fibonacci(cap(c), c)
+        // range 函数遍历每个从通道接收到的数据，因为 c 在发送完 10 个
+        // 数据之后就关闭了通道，所以这里我们 range 函数在接收到 10 个数据
+        // 之后就结束了。如果上面的 c 通道不关闭，那么 range 函数就不
+        // 会结束，从而在接收第 11 个数据的时候就阻塞了。
+        for i := range c {
+                fmt.Println(i)
+        }
+}
+
+/*
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+*/
+
+```
+
+
+
+
 

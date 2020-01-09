@@ -1033,3 +1033,330 @@ append(numbers,1)    //将元素1添加到numbers后边
 copy(numbers1,numbers)   // 将numbers复制到numbers1中
 ```
 
+## 十六、语言接口
+
+ Go 语言提供了另外一种数据类型即接口，它把所有的具有共性的方法定义在一起，任何其他类型只要实现了这些方法就是实现了这个接口 
+
+````go
+/* 定义接口 */
+type interface_name interface {
+   method_name1 [return_type]
+   method_name2 [return_type]
+   method_name3 [return_type]
+   ...
+   method_namen [return_type]
+}
+
+/* 定义结构体 */
+type struct_name struct {
+   /* variables */
+}
+
+/* 实现接口方法 */
+func (struct_name_variable struct_name) method_name1() [return_type] {
+   /* 方法实现 */
+}
+...
+func (struct_name_variable struct_name) method_namen() [return_type] {
+   /* 方法实现*/
+}
+````
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+type Phone interface {
+    call()
+}
+
+type NokiaPhone struct {
+}
+
+func (nokiaPhone NokiaPhone) call() {
+    fmt.Println("I am Nokia, I can call you!")
+}
+
+type IPhone struct {
+}
+
+func (iPhone IPhone) call() {
+    fmt.Println("I am iPhone, I can call you!")
+}
+
+func main() {
+    var phone Phone
+
+    phone = new(NokiaPhone)
+    phone.call()
+
+    phone = new(IPhone)
+    phone.call()
+
+}
+
+/*
+I am Nokia, I can call you!
+I am iPhone, I can call you!
+*/
+```
+
+## 十七、错误处理
+
+Go语言通过内置的错误接口提供了非常简单的错误处理机制。
+
+```go
+type error interface {
+	Error() string
+}
+```
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+// 定义一个 DivideError 结构
+type DivideError struct {
+    dividee int
+    divider int
+}
+
+// 实现 `error` 接口
+func (de *DivideError) Error() string {
+    strFormat := `
+    Cannot proceed, the divider is zero.
+    dividee: %d
+    divider: 0
+`
+    return fmt.Sprintf(strFormat, de.dividee)
+}
+
+// 定义 `int` 类型除法运算的函数
+func Divide(varDividee int, varDivider int) (result int, errorMsg string) {
+    if varDivider == 0 {
+            dData := DivideError{
+                    dividee: varDividee,
+                    divider: varDivider,
+            }
+            errorMsg = dData.Error()
+            return
+    } else {
+            return varDividee / varDivider, ""
+    }
+
+}
+
+func main() {
+
+    // 正常情况
+    if result, errorMsg := Divide(100, 10); errorMsg == "" {
+            fmt.Println("100/10 = ", result)
+    }
+    // 当除数为零的时候会返回错误信息
+    if _, errorMsg := Divide(100, 0); errorMsg != "" {
+            fmt.Println("errorMsg is: ", errorMsg)
+    }
+
+}
+/*
+100/10 =  10
+errorMsg is:  
+    Cannot proceed, the divider is zero.
+    dividee: 100
+    divider: 0
+*/
+```
+
+## 十八、并发
+
+Go 语言支持并发，我们只需要通过 go 关键字来开启 goroutine 即可。
+
+goroutine 是轻量级线程，goroutine 的调度是由 Golang 运行时进行管理的。
+
+goroutine 语法格式：
+
+```go
+go 函数名（参数列表）
+go f(x,y,z)
+f(x,y,z) //开启一个新的goroutine
+```
+
+Go允许使用go语句开启一个新的运行期线程，即goroutine，以一个不同的、新创建的goroutine来执行一个函数。同一个程序中的所有goroutine共享同一个地址空间。
+
+```go
+package main
+
+import (
+        "fmt"
+        "time"
+)
+
+func say(s string) {
+        for i := 0; i < 5; i++ {
+                time.Sleep(100 * time.Millisecond)
+                fmt.Println(s)
+        }
+}
+
+func main() {
+        go say("world")
+        say("hello")
+}
+
+```
+
+执行以上代码，你会看到输出的 hello 和 world 是没有固定先后顺序。因为它们是两个 goroutine 在执行：
+
+```go
+world
+hello
+hello
+world
+world
+hello
+hello
+world
+world
+hello
+```
+
+### 1.通道（channel）
+
+一个传递数据的数据结构
+
+通道可用于两个goroutine之间通过传递一个指定类型的值来同步运行和通讯。操作符 <- 用于指定通道的方向，发送或接收。如果未指定方向，则为双向通道。
+
+```go
+ch <- v //把v发送到通道ch
+v := <- ch  // 从ch接收数据，并把值赋给 v
+```
+
+ 声明一个通道很简单，我们使用chan关键字即可，通道在使用前必须先创建： 
+
+```go
+ch := make(chan int)
+```
+
+ **注意**：默认情况下，通道是不带缓冲区的。发送端发送数据，同时必须有接收端相应的接收数据。
+
+以下实例通过两个 goroutine 来计算数字之和，在 goroutine 完成计算后，它会计算两个结果的和：
+
+```go
+package main
+
+import "fmt"
+
+func sum(s []int, c chan int) {
+        sum := 0
+        for _, v := range s {
+                sum += v
+        }
+        c <- sum // 把 sum 发送到通道 c
+}
+
+func main() {
+        s := []int{7, 2, 8, -9, 4, 0}
+
+        c := make(chan int)
+        go sum(s[:len(s)/2], c)
+        go sum(s[len(s)/2:], c)
+        x, y := <-c, <-c // 从通道 c 中接收
+
+        fmt.Println(x, y, x+y)
+}
+// -5 17 12
+```
+
+### 2.通道缓存区
+
+ 通道可以设置缓冲区，通过 make 的第二个参数指定缓冲区大小： 
+
+```go
+ch := make(chan int, 100)
+```
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    // 这里我们定义了一个可以存储整数类型的带缓冲通道
+        // 缓冲区大小为2
+        ch := make(chan int, 2)
+
+        // 因为 ch 是带缓冲的通道，我们可以同时发送两个数据
+        // 而不用立刻需要去同步读取数据
+        ch <- 1
+        ch <- 2
+
+        // 获取这两个数据
+        fmt.Println(<-ch)
+        fmt.Println(<-ch)
+}
+// 1
+// 2
+```
+
+###  3. 遍历通道与关闭通道
+
+ Go 通过 range 关键字来实现遍历读取到的数据，类似于与数组或切片。格式如下：  
+
+```go
+v，ok := <- ch
+```
+
+ 如果通道接收不到数据后 ok 就为 false，这时通道就可以使用 close() 函数来关闭。 
+
+```go
+package main
+
+import (
+        "fmt"
+)
+
+func fibonacci(n int, c chan int) {
+        x, y := 0, 1
+        for i := 0; i < n; i++ {
+                c <- x
+                x, y = y, x+y
+        }
+        close(c)
+}
+
+func main() {
+        c := make(chan int, 10)
+        go fibonacci(cap(c), c)
+        // range 函数遍历每个从通道接收到的数据，因为 c 在发送完 10 个
+        // 数据之后就关闭了通道，所以这里我们 range 函数在接收到 10 个数据
+        // 之后就结束了。如果上面的 c 通道不关闭，那么 range 函数就不
+        // 会结束，从而在接收第 11 个数据的时候就阻塞了。
+        for i := range c {
+                fmt.Println(i)
+        }
+}
+
+/*
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+*/
+```
+
+
+
+
+
