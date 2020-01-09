@@ -5,6 +5,7 @@ import (
 	"errors"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
+	"log"
 	"strings"
 	"time"
 )
@@ -72,7 +73,7 @@ func JWTAuth() gin.HandlerFunc {
 			return
 		}
 		// token验证
-		if kv[1] == "" {
+		if kv[1] == "" || kv[1] == "null" {
 			context.JSON(TokenError, gin.H{
 				"code": TokenMissHeader,
 				"msg":  "token invalid",
@@ -82,6 +83,7 @@ func JWTAuth() gin.HandlerFunc {
 		}
 		//	解析token
 		j := NewJWT()
+		log.Println(kv[1])
 		if status, err := j.ParseToken(kv[1]); err != nil {
 			context.JSON(TokenError, gin.H{
 				"code": status,

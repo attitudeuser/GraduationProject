@@ -4,6 +4,7 @@ import (
 	gomail "gopkg.in/gomail.v2"
 )
 
+// EmailServer 邮件配置实例
 type EmailServer struct {
 	ServerHost string          //邮件STMP地址 host
 	ServerPort int             //邮件STMP端口 port
@@ -16,6 +17,7 @@ type EmailServer struct {
 	Content    EmailContent    //邮件内容
 }
 
+// EmailContent 邮件内容
 type EmailContent struct {
 	Subject string //邮件主题
 	Content string //内容

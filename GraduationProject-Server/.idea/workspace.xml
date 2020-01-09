@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6319b6ab-fd89-4d5a-8ec8-972688f03f76" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveries/handler/issue.go" beforeDir="false" afterPath="$PROJECT_DIR$/deliveries/handler/issue.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveries/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/deliveries/router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deliveries/run.go" beforeDir="false" afterPath="$PROJECT_DIR$/deliveries/run.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +53,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/repositories" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../go-test" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">
@@ -79,6 +81,10 @@
     <proxy>goproxy.cn</proxy>
   </component>
   <component name="WindowStateProjectService">
+    <state x="613" y="201" key="FileChooserDialogImpl" timestamp="1578570583099">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="613" y="201" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1578570583099" />
     <state x="463" y="79" key="SettingsEditor" timestamp="1578272808041">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -87,9 +93,9 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="455" y="27" width="942" height="1038" key="find.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1578489853314" />
-    <state x="404" y="45" width="906" height="1034" key="search.everywhere.popup" timestamp="1578442365093">
+    <state x="404" y="45" width="906" height="1034" key="search.everywhere.popup" timestamp="1578575237165">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="404" y="45" width="906" height="1034" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1578442365093" />
+    <state x="404" y="45" width="906" height="1034" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1578575237165" />
   </component>
 </project>

@@ -146,8 +146,8 @@ func (this *UserUC) Forget2SendEmail(ctx *gin.Context) (int, *Response) {
 
 // ForgetUpdatePassword 用户忘记密码 修改密码逻辑
 func (this *UserUC) Forget2ResetPassword(ctx *gin.Context) (int, *Response) {
-	key := ctx.Param("uuid")
-	password := ctx.Param("password")
+	key := ctx.Query("uuid")
+	password := ctx.Query("password")
 	val, err := ur.GetResetArgs(key)
 	if err != nil {
 		return StatusServerError, &Response{
@@ -174,14 +174,6 @@ func (this *UserUC) Forget2ResetPassword(ctx *gin.Context) (int, *Response) {
 	}
 }
 
-// Logout 用户退出登陆逻辑
-func (this *UserUC) Logout(ctx *gin.Context) (int, *Response) {
-	return StatusOK, &Response{
-		Code:    StatusOK,
-		Message: "ok",
-	}
-}
-
 // Profile 用户查看个人信息逻辑
 func (this *UserUC) Profile(ctx *gin.Context) (int, *Response) {
 	//从前端请求头中包含的UID来作用户区别 JWT只做登陆评判依据
@@ -197,24 +189,6 @@ func (this *UserUC) Profile(ctx *gin.Context) (int, *Response) {
 		Code:    StatusOK,
 		Message: "查询成功",
 		Data:    user,
-	}
-}
-
-// Cancellation 用户自注销 删除账号逻辑
-func (this *UserUC) Cancellation(ctx *gin.Context) (int, *Response) {
-	id := utils.ParseStringToInt64(ctx.Query("id"))
-	if id, err := ur.Delete(id); err != nil {
-		//删除数据库操作失败
-		return StatusServerError, &Response{
-			Code:    ErrorDatabaseDelete,
-			Message: "数据库删除操作出错",
-		}
-	} else {
-		//操作成功
-		return StatusOK, &Response{
-			Code:    StatusOK,
-			Message: utils.ParseInt64ToString(id),
-		}
 	}
 }
 
@@ -245,7 +219,7 @@ func (this *UserUC) ModifyInformation(ctx *gin.Context) (int, *Response) {
 	}
 }
 
-// FindOne ...
+// FindOne 查询某个用户的信息
 func (this *UserUC) FindOne(ctx *gin.Context) (int, *Response) {
 	var user = &models.User{}
 	id := utils.ParseStringToInt64(ctx.Query("id"))
@@ -254,13 +228,5 @@ func (this *UserUC) FindOne(ctx *gin.Context) (int, *Response) {
 		Code:    StatusOK,
 		Message: utils.ParseInt64ToString(id),
 		Data:    user,
-	}
-}
-
-// FindMany ...
-func (this *UserUC) FindMany(ctx *gin.Context) *List {
-	return &List{
-		Code: StatusOK,
-		Data: ur.FindMany(),
 	}
 }

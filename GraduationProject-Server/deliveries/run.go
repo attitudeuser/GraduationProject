@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Run 路由运行
 func Run() {
 	var conf = utils.GetConfig()
 	var router = r.Router()

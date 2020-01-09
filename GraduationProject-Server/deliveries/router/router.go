@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Router 路由集中配置 返回路由
 func Router() *gin.Engine {
 	router := gin.Default()
 	//开启允许跨域
@@ -50,12 +51,6 @@ func Router() *gin.Engine {
 		subject.GET("/get", handler.GetSubject)
 		subject.GET("/delete", handler.DeleteSubject)
 		subject.GET("/relate", handler.RelateToIssue)
-	}
-	//管理员路由
-	var admin = router.Group("/api/admin")
-	{
-		//查找用户列表
-		admin.GET("/userlist", handler.FindMany)
 	}
 	return router
 }

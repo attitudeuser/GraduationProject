@@ -36,6 +36,7 @@ type MessageInterface interface {
 	Read(int64) *models.Message
 	//删除消息接口
 	Delete(int64) (int64, error)
+	//获得消息列表
 	List() []*models.Message
 }
 
@@ -55,10 +56,12 @@ type IssueInterface interface {
 
 // SubjectInterface 学生选题管理接口
 type SubjectInterface interface {
+	//查看用户选题情况
 	Get(uid int64) *models.Subject
 	//选题
 	Select(subject *models.Subject) (int64, error)
 	//删除选题
 	Delete(subject *models.Subject) (int64, error)
+	//查看与issue的依赖 实际上是通过subject查看issue的信息
 	RelateIssue(iid int64) *models.Issue
 }

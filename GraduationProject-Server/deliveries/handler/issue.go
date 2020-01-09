@@ -22,10 +22,12 @@ func IssueList(this *gin.Context) {
 	this.JSON(iuc.List(this))
 }
 
+// IssueListById 通过ID查询issue列表
 func IssueListById(this *gin.Context) {
 	this.JSON(iuc.FindById(this))
 }
 
+// IssueDelete 删除issue
 func IssueDelete(this *gin.Context) {
 	this.JSON(iuc.Delete(this))
 }

@@ -5,6 +5,7 @@ import (
 	"log"
 )
 
+// GenerateUUID 返回一个唯一的UUID
 func GenerateUUID() string {
 	u, err := uuid.NewV4()
 	if err != nil {

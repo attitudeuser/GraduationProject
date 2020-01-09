@@ -8,6 +8,7 @@ import (
 	"net/http"
 )
 
+// IpQuery 查询当前的IP地址
 type IpQuery struct {
 	Query      string `json:"query"`      //查询IP
 	Status     string `json:"status"`     //查询状态

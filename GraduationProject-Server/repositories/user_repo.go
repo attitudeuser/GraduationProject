@@ -50,6 +50,7 @@ func (this *UserRepo) RecordGet(u *models.User) (bool, *models.User) {
 	return has, u
 }
 
+// FindMany 返回用户列表
 func (this *UserRepo) FindMany() []*models.User {
 	all := make([]*models.User, 0)
 	if err := engine.Find(&all); err != nil {
@@ -58,20 +59,20 @@ func (this *UserRepo) FindMany() []*models.User {
 	return all
 }
 
-// 忘记密码时 发送邮件 将验证参数写入redis 设置过期时间1h
+// SetResetArgs 忘记密码时 发送邮件 将验证参数写入redis 设置过期时间1h
 func (this *UserRepo) SetResetArgs(uuid string, uid, expires int64) error {
 	//过期时间为0 则强制为3600
 	if expires == 0 {
 		expires = 3600
 	}
-	err := rgo.Set(uuid, uid, time.Duration(expires)*time.Second).Err()
+	err := rgo.SetNX(uuid, uid, time.Duration(expires)*time.Second).Err()
 	if err != nil {
 		panic("redis:" + err.Error())
 	}
 	return err
 }
 
-// 重置忘记密码时 获得参数 检验是否有效
+// GetResetArgs 重置忘记密码时 获得参数 检验是否有效
 func (this *UserRepo) GetResetArgs(uuid string) (string, error) {
 	return rgo.Get(uuid).Result()
 }

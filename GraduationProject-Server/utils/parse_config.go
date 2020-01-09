@@ -24,6 +24,7 @@ type Environments struct {
 	Redis  Driver `yaml:"redis"`  //redis数据库配置
 }
 
+// Driver 数据库驱动链接
 type Driver struct {
 	DSN   string `yaml:"dsn"`   //数据库连接的源名称
 	Debug bool   `yaml:"debug"` //开启数据库debug模式
@@ -31,9 +32,10 @@ type Driver struct {
 
 // User 用户配置项
 type User struct {
-	ResetExpire int64 `yaml:"reset_expires"`
+	ResetExpire int64 `yaml:"reset_expires"`	//重置密码过期时间
 }
 
+// Jwt 认证配置
 type Jwt struct {
 	SignKey     string `yaml:"sign_key"`
 	SignMethod  string `yaml:"sign_method"`
@@ -54,6 +56,7 @@ type Email struct {
 var conf *E
 var once sync.Once
 
+// GetConfig 返回一个全局配置文件的单例
 func GetConfig() *E {
 	once.Do(func() {
 		conf = new(E)

@@ -1,5 +1,6 @@
 package models
 
+// Issue 课题结构
 type Issue struct {
 	Id      int64  `json:"id" form:"-"`                                //主键
 	Tid     int64  `json:"tid" form:"tid"`                             //发布者ID

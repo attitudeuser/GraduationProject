@@ -8,8 +8,10 @@ import (
 	"time"
 )
 
+// mr 是是存储层反转过来的对象实例 与存储层的消息model有关
 var mr = repositories.NewMessageRepo()
 
+// MessageUC 消息用例结构
 type MessageUC struct {
 }
 
@@ -72,7 +74,7 @@ func (this *MessageUC) Delete(ctx *gin.Context) (int, *Response) {
 	}
 }
 
-// List
+// List 获取消息列表
 func (this *MessageUC) List(ctx *gin.Context) (int, *Response) {
 	list := mr.List()
 	return StatusOK, &Response{

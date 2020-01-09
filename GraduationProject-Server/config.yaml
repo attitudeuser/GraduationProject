@@ -18,18 +18,18 @@ environments:
     # 签名主题
     sign_subject: Login
     # Token 有效时间 单位:秒
-    sign_expires: 36000000
+    sign_expires: 3600
   mysql:
     # MySQL Data Source Name
     # docker run -it -d --name go-mysql8  -p 33060:3306 -e MYSQL_ROOT_PASSWORD=11ysc1s1kR -e MYSQL_DATABASE=bs mysql:latest --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
-    dsn: root:11ysc1s1kR@tcp(192.168.43.179:33060)/bs?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local
+    dsn: root:11ysc1s1kR@tcp(192.168.1.107:33060)/bs?charset=utf8mb4&collation=utf8mb4_general_ci&parseTime=True&loc=Local
     # 是否开启 ORM 的调试
     debug: true
   redis:
     # Redis Data Source Name
     # docker: docker run -d --name go-redis -p 6379:6379 redis --requirepass "11ysc1s1kR"
     # 填写格式: password@host:port
-    dsn: 11ysc1s1kR@192.168.43.179:6379
+    dsn: 11ysc1s1kR@192.168.1.107:6379
     # 是否开启 Redis 的调试信息
     debug: true
     # 邮件服务功能配置

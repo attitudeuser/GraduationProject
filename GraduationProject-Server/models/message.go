@@ -2,6 +2,7 @@ package models
 
 import "time"
 
+// Message 消息结构
 type Message struct {
 	Id       int64     `json:"id"`                                         //主键
 	Fid      int64     `json:"fid" form:"fid"`                             //发送者ID

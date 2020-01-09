@@ -18,11 +18,6 @@ func Signin(this *gin.Context) {
 	this.JSON(uuc.Signin(this))
 }
 
-//用户-退出
-func Logout(this *gin.Context) {
-	this.JSON(uuc.Logout(this))
-}
-
 // Forget 忘记密码 发送邮件功能
 func Forget(this *gin.Context) {
 	this.JSON(uuc.Forget2SendEmail(this))
@@ -41,12 +36,6 @@ func Profile(this *gin.Context) {
 //查看用户信息
 func FindOne(this *gin.Context) {
 	this.JSON(uuc.FindOne(this))
-}
-
-//查看用户列表
-func FindMany(this *gin.Context) {
-	r := uuc.FindMany(this)
-	this.JSON(r.Code, r)
 }
 
 //修改用户

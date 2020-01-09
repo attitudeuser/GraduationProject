@@ -8,7 +8,7 @@ const (
 	ADMIN   = "admin"   //管理员
 )
 
-// 用户表结构
+// User 用户表结构
 type User struct {
 	Id         int64     `form:"id" json:"id"`
 	Username   string    `form:"username" json:"username" xorm:"varchar(32) notnull unique"` //用户名
